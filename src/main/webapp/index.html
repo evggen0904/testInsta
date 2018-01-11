@@ -1,0 +1,49 @@
+<html ng-app="myApp">
+<head>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ngDialog.css">
+    <link rel="stylesheet" href="css/ngDialog-theme-default.css">
+    <meta charset="utf-8">
+</head>
+<body ng-controller="PictureCtrl">
+
+<div class="wrap">
+    <div class="content">
+
+        <!--    <pop-up-dialog></pop-up-dialog>-->
+        <!-- <input type="text" {{p.path}}> -->
+
+        <table class="maintable">
+            <tr ng-repeat="picture in pictures">
+                <td ng-repeat="p in picture" class="tabrow">
+
+                    <img src={{p.path}} alt="" class="image" ng-click="openDefault(p)"></td>
+            </tr>
+        </table>
+
+        <!-- Templates -->
+
+        <script type="text/ng-template" id="firstDialogId">
+            <div ng-controller="InsideCtrl">
+
+                <img src={{currentPicture.path}}>
+                <table>
+                    <tr ng-repeat="comment in comments">
+                        <td>{{ comment.comment }}</td>
+                    </tr>
+                </table>
+                <textarea ng-model="newComment" autofocus wrap="hard" width="800"></textarea>
+                <button ng-click="addComment()">Отправить</button>
+            </div>
+
+        </script>
+        <script src=libs/angular.js></script>
+        <script src=app.js></script>
+        <script src=libs/ngDialog.js></script>
+    </div>
+</div>
+
+
+</body>
+</html>
