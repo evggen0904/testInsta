@@ -131,7 +131,7 @@ app.controller('InsideCtrl', function ($scope, ngDialog, CommentService) {
         var date = new Date();
         var dataObj = {
             "author_id": 3,
-            "comment_date": "2010-10-10",
+            "comment_date": date.toJSON(),
             "comment": $scope.newComment,
             "picture_id": $scope.currentPicture.id
         };
@@ -143,7 +143,11 @@ app.controller('InsideCtrl', function ($scope, ngDialog, CommentService) {
                         $scope.comments = data;
                     });
             });
-    }
+    };
+
+    $scope.clearComment = function () {
+        $scope.newComment = '';
+    };
 });
 
 app.service("CommentService", function ($http) {

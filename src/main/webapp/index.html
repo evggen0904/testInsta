@@ -1,9 +1,9 @@
 <html ng-app="myApp">
 <head>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?123">
     <link rel="stylesheet" href="css/ngDialog.css">
-    <link rel="stylesheet" href="css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="css/ngDialog-theme-default.css?123">
     <meta charset="utf-8">
 </head>
 <body ng-controller="PictureCtrl">
@@ -25,21 +25,45 @@
         <!-- Templates -->
 
         <script type="text/ng-template" id="firstDialogId">
-            <div ng-controller="InsideCtrl">
+            <div position="absolute" ng-controller="InsideCtrl" >
 
-                <img src={{currentPicture.path}}>
-                <table>
-                    <tr ng-repeat="comment in comments">
-                        <td>{{ comment.comment }}</td>
-                    </tr>
-                </table>
-                <textarea ng-model="newComment" autofocus wrap="hard" width="800"></textarea>
-                <button ng-click="addComment()">Отправить</button>
+                <div>
+                    <img src={{currentPicture.path}} width="800px" height="500px">
+                </div>
+                <div style="width: 730px; margin:2px; position:relative; left:50px">
+                    <code >{{currentPicture.description}}</code>
+                </div>
+                <div >
+                    <table style="height: 200px">
+
+                        <tr ng-repeat="comment in comments">
+                            <td>
+                            <td style="position: relative; left:200px">
+                                <b><span>{{comment.comment_date}}: </span></b>
+                            </td>
+                            <td style="position: relative; left: 225px; width:500px">
+                                <span style="width:600px; word-break:break-all">
+                                     {{ comment.comment }}
+                                </span>
+                            </td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <textarea ng-model="newComment" class="textarea"></textarea>
+                </div>
+
+
+                <div >
+                    <button id="bntClearMessage" ng-click="clearComment()" style="margin:5px; position:relative; left:615px">Очистить</button>
+                    <button id="bntSendMessage" ng-click="addComment()" style="margin:5px; position:relative; left:625px">Отправить</button>
+                </div>
             </div>
 
         </script>
         <script src=libs/angular.js></script>
-        <script src=app.js></script>
+        <script src=app.js?123></script>
         <script src=libs/ngDialog.js></script>
     </div>
 </div>
